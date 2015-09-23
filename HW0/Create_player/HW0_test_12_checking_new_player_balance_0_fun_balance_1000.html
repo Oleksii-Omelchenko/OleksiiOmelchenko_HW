@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://193.138.245.222:81/" />
+<title>HW1_test3_checking_new_player_balance_0_player_fun_balance_1000</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">HW1_test3_checking_new_player_balance_0_player_fun_balance_1000</td></tr>
+</thead><tbody>
+<tr>
+	<td>type</td>
+	<td>XPath=//input[@id='723a925886__email']</td>
+	<td>${test_name}${mail}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>XPath=//input[@type='button'][@value='Search']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>XPath=//parent::tbody/child::tr[position()=2]/child::td[position()=6]</td>
+	<td>0.00</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>XPath=//parent::tbody/child::tr[position()=2]/child::td[position()=7]</td>
+	<td>1,000.00</td>
+</tr>
+</tbody></table>
+</body>
+</html>

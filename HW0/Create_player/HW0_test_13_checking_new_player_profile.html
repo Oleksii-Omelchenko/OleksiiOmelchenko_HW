@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://193.138.245.222:81/" />
+<title>HW1_test4_preconditional_checking_new_player_profile</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">HW1_test4_preconditional_checking_new_player_profile</td></tr>
+</thead><tbody>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Edit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>css=input[id='ff14642ac1c__us_fname']</td>
+	<td>${test_name}_fname</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>css=input[id='ff14642ac1c__us_lname']</td>
+	<td>${test_name}_lname</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>css=input[id='ff14642ac1c__us_city']</td>
+	<td>${test_name}_city</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>css=select[id='ff14642ac1c__us_country']</td>
+	<td>CANADA</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>css=textarea[id='ff14642ac1c__us_address']</td>
+	<td>${test_name}_adress</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>css=input[id='ff14642ac1c__us_phone']</td>
+	<td>${test_name}_+038</td>
+</tr>
+<tr>
+	<td>verifySelectedLabel</td>
+	<td>id=ff14642ac1c__us_gender</td>
+	<td>Male</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>XPath=//td[@id='c5618e27f0ab6d90d503b6ef5faca34c']/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]</td>
+	<td>$0.00</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>XPath=//td[@id='c5618e27f0ab6d90d503b6ef5faca34c']/table/tbody/tr[2]/td/table/tbody/tr[3]/td[2]</td>
+	<td>1,000.00</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>XPath=//td[@id='c5618e27f0ab6d90d503b6ef5faca34c']/table/tbody/tr[2]/td/table/tbody/tr[4]/td[2]</td>
+	<td>$0.00</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>XPath=//td[@id='c5618e27f0ab6d90d503b6ef5faca34c']/table/tbody/tr[2]/td/table/tbody/tr[5]/td[2]</td>
+	<td>0.00 LP</td>
+</tr>
+</tbody></table>
+</body>
+</html>
