@@ -61,15 +61,15 @@ public class PlayerEditPage {
         return lastName.getAttribute("value");
     }
 
-    public String getCity() {
+    public String getActualCity() {
         return city.getAttribute("value");
     }
 
-    public String getAddress() {
+    public String getActualAddress() {
         return address.getAttribute("value");
     }
 
-    public String getPhone() {
+    public String getActualPhone() {
         return phone.getAttribute("value");
     }
 
@@ -96,13 +96,9 @@ public class PlayerEditPage {
     public String getActualLoyaltyPoints() {
         return loyaltyPointsCell.getText();
     }
-    public String getGender() {
+    public String getActualGender() {
         return new Select(gender).getFirstSelectedOption().getText();
     }
 
-/* public String getGender() {
-        return
-    }
- */
 }
 

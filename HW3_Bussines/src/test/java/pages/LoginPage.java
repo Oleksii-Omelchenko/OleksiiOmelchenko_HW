@@ -29,6 +29,10 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
+    public void setUrl(String url) {
+        driver.get(url);
+
+    }
     public void setName(String log) {
         login.sendKeys(log);
 
