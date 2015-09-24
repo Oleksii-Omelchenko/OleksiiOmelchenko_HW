@@ -31,17 +31,14 @@ public class LoginPage {
 
     public void setName(String log) {
         login.sendKeys(log);
-
     }
 
 
     public void setPassword(String pas) {
         password.sendKeys(pas);
-
     }
 
     public void clickLoginButton() {
         loginButton.click();
-
     }
 }

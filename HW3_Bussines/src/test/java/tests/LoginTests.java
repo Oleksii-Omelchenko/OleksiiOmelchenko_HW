@@ -12,21 +12,14 @@ public class LoginTests {
 
 
     @Test
+
     public void LoginTestPositive() throws InterruptedException {
-
+        String expectedTitle = "Players";
         BaseLogin baseLogin = new BaseLogin();
-        baseLogin.loginAction(driver);
-
-       /*// driver = new FirefoxDriver();
-        //act
-        //driver.get(loginUrl);
-        LoginPage loginPage = new LoginPage(driver);
-       /* loginPage.setName(mainLogin);
-        loginPage.setPassword(mainPassword);
-        loginPage.clickLoginButton();*/
+        baseLogin.loginAction();
         Thread.sleep(4000);
         //check result
-        String expectedTitle = "Players";
+
         Assert.assertEquals(driver.getTitle(), expectedTitle);
         driver.close();
     }
