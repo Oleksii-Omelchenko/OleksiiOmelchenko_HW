@@ -1,4 +1,5 @@
-import org.openqa.selenium.By;
+package pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -6,10 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * Created by Admin on 19.09.2015.
+ * Created by Admin on 21.09.2015.
  */
-public class LoginPageObject {
-    private WebDriver driver;
+
+public class LoginPage {
+    protected WebDriver driver;
 
     //username
     @FindBy(id = "username")
@@ -22,25 +24,24 @@ public class LoginPageObject {
     WebElement loginButton;
 
 
-
-    public LoginPageObject(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void typeName(String login) {
-        driver.findElement(By.id("username")).sendKeys(login);
+    public void setName(String log) {
+        login.sendKeys(log);
 
     }
 
 
-    public void typePassword(String password) {
-        driver.findElement(By.id("password")).sendKeys(password);
+    public void setPassword(String pas) {
+        password.sendKeys(pas);
 
     }
 
-    public void clickOnButtonLogin() {
-        driver.findElement(By.id("logIn")).click();
+    public void clickLoginButton() {
+        loginButton.click();
 
     }
 }

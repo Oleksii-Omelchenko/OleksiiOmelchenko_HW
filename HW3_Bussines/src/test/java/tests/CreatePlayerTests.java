@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.LoginPage;
 import pages.PlayerEditPage;
 import pages.PlayersInsertPage;
 import pages.PlayersPage;
@@ -16,7 +15,7 @@ import java.util.Date;
 /**
  * Created by Admin on 21.09.2015.
  */
-public class TestCreatePlayer {
+public class CreatePlayerTests {
     WebDriver driver;
     protected String loginUrl = "http://193.138.245.222:81/auth/login";
     protected String mainLogin = "admin";
@@ -41,11 +40,8 @@ public class TestCreatePlayer {
         driver = new FirefoxDriver();
 
         //act on LoginPage
-        driver.get(loginUrl);
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.setName(mainLogin);
-        loginPage.setPassword(mainPassword);
-        loginPage.clickLoginButton();
+        BaseLogin baseLogin = new BaseLogin();
+        baseLogin.loginAction();
         Thread.sleep(4000);
 
         //act on PlayersPage
