@@ -16,7 +16,7 @@ public class Asserts {
         listOfAsserts.clear();
         this.driver = this.driver;
     }
-    public void assertEquals(String actualValue, String expectedValue) {
+    public void assertEquals(Object actualValue, Object expectedValue) {
         try {
             Assert.assertEquals(actualValue, expectedValue);
         } catch (AssertionError e) {
