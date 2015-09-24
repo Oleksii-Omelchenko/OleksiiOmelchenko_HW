@@ -1,43 +1,42 @@
 package tests;
 
+import logic.Asserts;
 import logic.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
  * Created by Admin on 24.09.2015.
  */
-public class LoginTests {
+public class LoginTests extends Base{
     WebDriver driver;
     // test values
-    protected String loginUrl = "http://193.138.245.222:81/auth/login";
-    protected String mainLogin = "admin";
+    /*protected String mainLogin = "admin";
     protected String invalidLogin = "test";
-    protected String mainPassword = "123";
+    protected String mainPassword = "123";*/
     protected String expectedTitle = "Players";
 
     @Test
     protected void LoginTestPositive() throws InterruptedException {
-        //act
-        Base base = new Base();
-        base.loginAction(loginUrl, mainLogin, mainPassword);
+        Asserts checking = new Asserts(driver);
+        //loginAction(mainLogin, mainPassword);
+        loginAction("admin", "123");
         Thread.sleep(4000);
-        //check result
-        Assert.assertEquals(driver.getTitle(), expectedTitle);
-        base.exit();
+        checking.assertEquals(driver.getTitle(), expectedTitle);
+
     }
 
     @Test
     protected void LoginTestNegative() throws InterruptedException {
+        Asserts checking = new Asserts(driver);
         //act
-        Base base = new Base();
-        base.loginAction(loginUrl, invalidLogin, mainPassword);
+        //loginAction(invalidLogin, mainPassword);
+        loginAction("test", "123");
         Thread.sleep(4000);
         String message = driver.findElement(By.cssSelector(".errors>li")).getText();
         //check result
-        Assert.assertEquals(message, "Invalid username or password");
-        base.exit();
+       checking.assertEquals(message, "Invalid username or password");
+
     }
 }
