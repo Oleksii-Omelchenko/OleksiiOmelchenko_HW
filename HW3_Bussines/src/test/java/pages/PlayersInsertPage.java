@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created by Admin on 21.09.2015.
  */
+//TODO Дописать метод выбора из списка и метод выбора чек-бокса
 public class PlayersInsertPage {
     protected WebDriver driver;
     @FindBy(id="ff14642ac1c__us_login")

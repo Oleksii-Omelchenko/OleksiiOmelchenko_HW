@@ -39,6 +39,8 @@ public class PlayerEditPage {
     WebElement addTransactionButton;
     @FindBy(xpath = "//input[@value='Save']")
     WebElement saveButton;
+    @FindBy(css="input#ff14642ac1c__payment_chat_enabled")
+    WebElement paymentCheckBox;
 
     public PlayerEditPage(WebDriver driver) {
         this.driver = driver;
@@ -99,6 +101,8 @@ public class PlayerEditPage {
     public String getActualGender() {
         return new Select(gender).getFirstSelectedOption().getText();
     }
-
+    public boolean getPaymentActualValue() {
+        return paymentCheckBox.isSelected();
+    }
 }
 

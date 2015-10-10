@@ -7,6 +7,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by Admin on 21.09.2015.
  */
@@ -18,7 +20,7 @@ public class TestLoginNegative {
     protected String mainPassword = "123";
 
     @Test
-    public void LoginPositiveTest() throws InterruptedException {
+    public void LoginNegativeTest() throws InterruptedException {
         driver = new FirefoxDriver();
         //act
         driver.get(loginUrl);
@@ -26,7 +28,7 @@ public class TestLoginNegative {
         loginPage.setName(invalidLogin);
         loginPage.setPassword(mainPassword);
         loginPage.clickLoginButton();
-        Thread.sleep(4000);
+        driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
         String message = driver.findElement(By.cssSelector(".errors>li")).getText();
         //check result
         Assert.assertEquals(message, "Invalid username or password");

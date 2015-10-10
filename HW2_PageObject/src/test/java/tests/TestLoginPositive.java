@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by Admin on 19.09.2015.
  */
@@ -27,7 +29,7 @@ public class TestLoginPositive {
         loginPage.setName(mainLogin);
         loginPage.setPassword(mainPassword);
         loginPage.clickLoginButton();
-        Thread.sleep(4000);
+       driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
         //check result
         Assert.assertEquals(driver.getTitle(), expectedTitle);
         driver.close();

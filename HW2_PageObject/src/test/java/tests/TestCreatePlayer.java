@@ -12,6 +12,7 @@ import pages.PlayersPage;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Admin on 21.09.2015.
@@ -46,12 +47,12 @@ public class TestCreatePlayer {
         loginPage.setName(mainLogin);
         loginPage.setPassword(mainPassword);
         loginPage.clickLoginButton();
-        Thread.sleep(4000);
+        driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
 
         //act on PlayersPage
         PlayersPage playersPage = new PlayersPage(driver);
         playersPage.clickInsertButton();
-        Thread.sleep(4000);
+        driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
 
         //act on PlayersInsertPage
         PlayersInsertPage playersInsertPage = new PlayersInsertPage(driver);
@@ -66,17 +67,16 @@ public class TestCreatePlayer {
         playersInsertPage.setPhone(expectedPhone);
         playersInsertPage.getGender();
         playersInsertPage.clickSaveButton();
-        Thread.sleep(4000);
+        driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
 
         //act on PlayersPage
         playersPage.setSearchByEmailCell(expectedPlayersEmail);
         playersPage.clickSearchButton();
-        Thread.sleep(4000);
         //get actual results
         String actualPlayerBalance = playersPage.getActualPlayerBalance();
         String actualFunBalance = playersPage.getActualPlayerFunBalance();
         playersPage.clickEditButton();
-        Thread.sleep(4000);
+        driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
 
         //act on PlayerEditPage
         PlayerEditPage playersEditPage = new PlayerEditPage(driver);

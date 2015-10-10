@@ -1,94 +1,99 @@
 package tests;
 
-import logic.Asserts;
-import logic.Base;
+import logic.InsertPageAct;
+import logic.PlayersPageAct;
+import objects.BuilderPokerPlayer;
+import objects.PokerPlayer;
 import org.testng.annotations.Test;
 import pages.PlayerEditPage;
 import pages.PlayersInsertPage;
-import pages.PlayersPage;
+import tools.SoftAsserts;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Admin on 21.09.2015.
  */
-public class CreatePlayerTest extends Base{
-
-    //test values
-    DateFormat nameCore = new SimpleDateFormat("MMddHHmmss");
-    Date date = new Date();
-    protected String expectedName = "a" + String.valueOf(nameCore.format(date));
-    protected String playersPassword = "Password";
-    protected String expectedPlayersEmail = (expectedName + "@test.com");
-    protected String expectedFirstName = expectedName + "first";
-    protected String expectedLastName = expectedName + "last";
-    protected String expectedCity = expectedName + "city";
-    protected String expectedAddress = expectedName + "adress";
-    protected String expectedPhone = "+038";
-    protected String expectedGender = "Male";
-    protected String expectedPlayerBalance = "0.00";
-    protected String expectedFunBalance = "1,000.00";
-
+public class CreatePlayerTest extends BaseTest {
 
     @Test
     public void testCreatePlayer() throws InterruptedException {
-        //act on LoginPage
-        loginAction("admin", "123");
-        //act on PlayersPage
-        PlayersPage playersPage = new PlayersPage(driver);
-        playersPage.clickInsertButton();
-        Thread.sleep(4000);
+        //test values
+        DateFormat nameCore = new SimpleDateFormat("MMddHHmmss");
+        Date date = new Date();
+        String expectedName = "A" + String.valueOf(nameCore.format(date));
 
-        //act on PlayersInsertPage
-        PlayersInsertPage playersInsertPage = new PlayersInsertPage(driver);
-        playersInsertPage.setName(expectedName);
-        playersInsertPage.setPlayersPassword(playersPassword);
-        playersInsertPage.setConfirmPlayersPassword(playersPassword);
-        playersInsertPage.setEmail(expectedPlayersEmail);
-        playersInsertPage.setFirstName(expectedFirstName);
-        playersInsertPage.setLastName(expectedLastName);
-        playersInsertPage.setCity(expectedCity);
-        playersInsertPage.setAddress(expectedAddress);
-        playersInsertPage.setPhone(expectedPhone);
-        playersInsertPage.getGender();
-        playersInsertPage.clickSaveButton();
-        Thread.sleep(4000);
+        PokerPlayer expectedPlayer = new BuilderPokerPlayer()
+                .withName(expectedName)
+                .withPassword("password")
+                .withEmail(expectedName + "@test.com")
+                .withCity(expectedName + "city")
+                .withFirstName(expectedName + "first")
+                .withLastName(expectedName + "last")
+                .withAddress(expectedName + "address")
+                .withPhone("+038")
+                .withGender("Male")
+                .withRealMoney("$0.00")
+                .withFunMoney("1000.00")
+                .withBonusDollars("$0.000")
+                .withLoyaltyPoints("0.00 LP")
+                .withPayment(true).build();
 
-        //act on PlayersPage
-        playersPage.setSearchByEmailCell(expectedPlayersEmail);
-        playersPage.clickSearchButton();
-        Thread.sleep(4000);
-        //get actual results
-        String actualPlayerBalance = playersPage.getActualPlayerBalance();
-        String actualFunBalance = playersPage.getActualPlayerFunBalance();
+        //get Players-Insert page
+        playersPage.clickInsertButton(); // TODO вот здесь NullPointerException
+        driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+
+        //set values
+        PlayersInsertPage insertPage = new PlayersInsertPage(driver);
+        InsertPageAct.setNewPlayerData(insertPage, expectedPlayer);
+        //click save
+        InsertPageAct.clickSaveButton(insertPage);
+        //search for Player
+        PlayersPageAct.searchPlayer(playersPage, expectedPlayer);
+        //get Player-Edit page
         playersPage.clickEditButton();
-       Thread.sleep(4000);
+        driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+        PlayerEditPage playerEditPage = new PlayerEditPage(driver);
 
-        //act on PlayerEditPage
-        PlayerEditPage playersEditPage = new PlayerEditPage(driver);
-        String actualName = playersEditPage.getActualName();
-        String actualEmail = playersEditPage.getActualEmail();
-        String actualFirstName = playersEditPage.getActualFirstName();
-        String actualLastName = playersEditPage.getActualLastName();
-        String actualCity = playersEditPage.getActualCity();
-        String actualAddress = playersEditPage.getActualAddress();
-        String actualPhone = playersEditPage.getActualPhone();
-        String actualGender = playersEditPage.getActualGender();
-        //check
-        Asserts checking = new Asserts(driver);
-        checking.assertEquals(actualName, expectedName);
-        checking.assertEquals(actualEmail, expectedPlayersEmail);
-        checking.assertEquals(actualFirstName, expectedFirstName);
-        checking.assertEquals(actualLastName,expectedLastName);
-        checking.assertEquals(actualCity, expectedCity);
-        checking.assertEquals(actualAddress, expectedAddress);
-        checking.assertEquals(actualPhone, expectedPhone);
-        checking.assertEquals(actualGender,expectedGender);
-        checking.assertEquals(actualPlayerBalance, expectedPlayerBalance);
-        checking.assertEquals(actualFunBalance, expectedFunBalance);
 
+        //get players values
+
+        PokerPlayer actualPlayer = new BuilderPokerPlayer()
+
+                .withName(playerEditPage.getActualName())
+                .withEmail(playerEditPage.getActualEmail())
+                .withFirstName(playerEditPage.getActualFirstName())
+                .withLastName(playerEditPage.getActualLastName())
+                .withCity(playerEditPage.getActualCity())
+                .withAddress(playerEditPage.getActualAddress())
+                .withPhone(playerEditPage.getActualPhone())
+                .withGender(playerEditPage.getActualGender())
+                .withRealMoney(playerEditPage.getActualRealMoney())
+                .withFunMoney(playerEditPage.getActualFunMoney())
+                .withBonusDollars(playerEditPage.getActualBonusDollars())
+                .withLoyaltyPoints(playerEditPage.getActualLoyaltyPoints())
+                .withPayment(playerEditPage.getPaymentActualValue()).build();
+
+        //check result values
+        SoftAsserts verification = new SoftAsserts();
+        verification.assertEquals(actualPlayer.playerName, expectedPlayer.playerName);
+        verification.assertEquals(actualPlayer.playerEmail, expectedPlayer.playerEmail);
+        verification.assertEquals(actualPlayer.playerFirstName, expectedPlayer.playerFirstName);
+        verification.assertEquals(actualPlayer.playerLastName, expectedPlayer.playerLastName);
+        verification.assertEquals(actualPlayer.playerCity, expectedPlayer.playerCity);
+        verification.assertEquals(actualPlayer.playerAddress, expectedPlayer.playerAddress);
+        verification.assertEquals(actualPlayer.playerPhone, expectedPlayer.playerPhone);
+        verification.assertEquals(actualPlayer.playerGender, expectedPlayer.playerGender);
+        verification.assertEquals(actualPlayer.playerRealMoney, expectedPlayer.playerRealMoney);
+        verification.assertEquals(actualPlayer.playerFunMoney, expectedPlayer.playerFunMoney);
+        verification.assertEquals(actualPlayer.playerBonusDollars, expectedPlayer.playerBonusDollars);
+        verification.assertEquals(actualPlayer.playerLoyaltyPoints, expectedPlayer.playerLoyaltyPoints);
+        verification.assertEquals(actualPlayer.payment, expectedPlayer.payment);
+
+        //print errors
+        verification.printErrors();
     }
-    }
-
+}

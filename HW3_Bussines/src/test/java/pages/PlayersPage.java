@@ -27,13 +27,18 @@ public class PlayersPage {
     WebElement playerFunBalanceCell;
 
 
+
     public PlayersPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void clickInsertButton() {
+    /*public void clickInsertButton() {
         insertPlayerButton.click();
+    }*/
+    public PlayersInsertPage clickInsertButton() {
+        insertPlayerButton.click();
+        return new PlayersInsertPage(driver);
     }
 
     public void setSearchByEmailCell(String email) {
@@ -44,8 +49,9 @@ public class PlayersPage {
         searchButton.click();
     }
 
-    public void clickEditButton() {
+    public PlayerEditPage clickEditButton() {
         editButton.click();
+        return new PlayerEditPage(driver);
     }
 
     public String getActualPlayerBalance() {
@@ -55,7 +61,11 @@ public class PlayersPage {
     public String getActualPlayerFunBalance() {
         return playerFunBalanceCell.getAttribute("value");
     }
+
     public void clickLogout() {
         logout.click();
+    }
+    public String getPageTitle() {
+        return driver.getTitle();
     }
 }
