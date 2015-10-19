@@ -33,9 +33,6 @@ public class PlayersPage {
         PageFactory.initElements(driver, this);
     }
 
-    /*public void clickInsertButton() {
-        insertPlayerButton.click();
-    }*/
     public PlayersInsertPage clickInsertButton() {
         insertPlayerButton.click();
         return new PlayersInsertPage(driver);
@@ -65,7 +62,5 @@ public class PlayersPage {
     public void clickLogout() {
         logout.click();
     }
-    public String getPageTitle() {
-        return driver.getTitle();
-    }
+
 }

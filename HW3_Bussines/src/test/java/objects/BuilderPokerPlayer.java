@@ -91,6 +91,6 @@ public class BuilderPokerPlayer {
     }
 
     public PokerPlayer build() {
-        return new PokerPlayer(name, password, email, firstName, lastName, city, address, phone, gender, realMoney, funMoney, bonusDollars, loyaltyPoints, payment);
+        return new PokerPlayer(name, email, password, firstName, lastName, city, address, phone, gender, realMoney, funMoney, bonusDollars, loyaltyPoints, payment);
     }
 }

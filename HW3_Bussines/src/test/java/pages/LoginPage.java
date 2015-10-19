@@ -33,6 +33,7 @@ public class LoginPage {
         driver.get(url);
 
     }
+
     public void setName(String log) {
         login.sendKeys(log);
 
@@ -45,8 +46,9 @@ public class LoginPage {
     }
 
 
-    public void clickLoginButton() {
+    public PlayersPage clickLoginButton() {
         loginButton.click();
+        return new PlayersPage(driver);
 
     }
 }

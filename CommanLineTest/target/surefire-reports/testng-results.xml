@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Regression1" duration-ms="89" started-at="2015-10-17T09:16:04Z" finished-at="2015-10-17T09:16:04Z">
+    <groups>
+      <group name="a">
+        <method signature="Test1.T1()[pri:0, instance:pac1.Test1@327471b5]" name="T1" class="pac1.Test1"/>
+        <method signature="Test1.T2()[pri:0, instance:pac1.Test1@327471b5]" name="T2" class="pac1.Test1"/>
+        <method signature="Test2.T1()[pri:0, instance:Test2@180bc464]" name="T1" class="Test2"/>
+      </group> <!-- a -->
+      <group name="mega">
+        <method signature="Test1.T2()[pri:0, instance:pac1.Test1@327471b5]" name="T2" class="pac1.Test1"/>
+        <method signature="Test2.T1()[pri:0, instance:Test2@180bc464]" name="T1" class="Test2"/>
+      </group> <!-- mega -->
+    </groups>
+    <test name="Test" duration-ms="89" started-at="2015-10-17T09:16:04Z" finished-at="2015-10-17T09:16:04Z">
+      <class name="pac1.Test1">
+        <test-method status="PASS" signature="T1()[pri:0, instance:pac1.Test1@327471b5]" name="T1" duration-ms="29" started-at="2015-10-17T12:16:04Z" finished-at="2015-10-17T12:16:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- T1 -->
+        <test-method status="PASS" signature="T2()[pri:0, instance:pac1.Test1@327471b5]" name="T2" duration-ms="1" started-at="2015-10-17T12:16:04Z" finished-at="2015-10-17T12:16:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- T2 -->
+      </class> <!-- pac1.Test1 -->
+      <class name="Test2">
+        <test-method status="PASS" signature="T1()[pri:0, instance:Test2@180bc464]" name="T1" duration-ms="1" started-at="2015-10-17T12:16:04Z" finished-at="2015-10-17T12:16:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- T1 -->
+        <test-method status="PASS" signature="T2()[pri:0, instance:Test2@180bc464]" name="T2" duration-ms="1" started-at="2015-10-17T12:16:04Z" finished-at="2015-10-17T12:16:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- T2 -->
+      </class> <!-- Test2 -->
+    </test> <!-- Test -->
+  </suite> <!-- Regression1 -->
+</testng-results>
