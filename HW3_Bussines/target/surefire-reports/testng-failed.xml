@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Suite1]">
+  <test name="demonstration(failed)">
+    <classes>
+      <class name="tests.CreatePlayerTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="testCreatePlayer"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- tests.CreatePlayerTest -->
+      <class name="tests.LoginTests">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- tests.LoginTests -->
+    </classes>
+  </test> <!-- demonstration(failed) -->
+</suite> <!-- Failed suite [Suite1] -->

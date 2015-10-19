@@ -2,6 +2,7 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.PlayersPage;
@@ -30,15 +31,13 @@ public class BaseTest {
         loginPage.setPassword("123");
         loginPage.clickLoginButton();
         tools.waitForPageToLoad(driver);
-        //driver.manage().window().maximize();
-        //driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
 
     }
 
-   /* @AfterMethod
+    @AfterMethod
     public void tearDown() {
         driver.close();
-    }*/
+    }
 
     }
 

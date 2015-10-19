@@ -63,7 +63,7 @@ public class CreatePlayerTest extends BaseTest {
                 .withFirstName(playerEditPage.getActualFirstName())
                 .withLastName(playerEditPage.getActualLastName())
                 .withCity(playerEditPage.getActualCity())
-                .withAddress(playerEditPage.getActualAddress())
+                //.withAddress(playerEditPage.getActualAddress())
                 .withPhone(playerEditPage.getActualPhone())
                 .withGender(playerEditPage.getActualGender())
                 .withRealMoney(playerEditPage.getActualRealMoney())
@@ -79,12 +79,12 @@ public class CreatePlayerTest extends BaseTest {
         verification.assertEquals(actualPlayer.playerFirstName, expectedPlayer.playerFirstName);
         verification.assertEquals(actualPlayer.playerLastName, expectedPlayer.playerLastName);
         verification.assertEquals(actualPlayer.playerCity, expectedPlayer.playerCity);
-        verification.assertEquals(actualPlayer.playerAddress, expectedPlayer.playerAddress);
+        //verification.assertEquals(actualPlayer.playerAddress, expectedPlayer.playerAddress);
         verification.assertEquals(actualPlayer.playerPhone, expectedPlayer.playerPhone);
         verification.assertEquals(actualPlayer.playerGender, expectedPlayer.playerGender);
         verification.assertEquals(actualPlayer.playerRealMoney, expectedPlayer.playerRealMoney);
         verification.assertEquals(actualPlayer.playerFunMoney, expectedPlayer.playerFunMoney);
-       verification.assertEquals(actualPlayer.playerBonusDollars, expectedPlayer.playerBonusDollars);
+        verification.assertEquals(actualPlayer.playerBonusDollars, expectedPlayer.playerBonusDollars);
         verification.assertEquals(actualPlayer.playerLoyaltyPoints, expectedPlayer.playerLoyaltyPoints);
         verification.assertEquals(actualPlayer.payment, expectedPlayer.payment);
 

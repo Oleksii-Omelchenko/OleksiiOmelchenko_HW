@@ -1,0 +1,13 @@
+logic\PlayersPageAct.class
+objects\PokerPlayer.class
+pages\LoginPage.class
+pages\PlayersInsertPage.class
+tests\BaseTest.class
+tests\CreatePlayerTest.class
+pages\PlayerEditPage.class
+tools\SoftAsserts.class
+objects\BuilderPokerPlayer.class
+tests\LoginTests.class
+tools\Tools.class
+logic\InsertPageAct.class
+pages\PlayersPage.class
